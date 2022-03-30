@@ -11,6 +11,12 @@
 <body>
     <button id="notifyMe">Notify me!</button>
     <script>
+        function showNotification() {
+            const notification = new Notification('Notification API', {
+                body: 'This is a notification from the Notification API',
+                icon: 'https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2Ficon-192x192.png?1490300261400'
+            });
+        }
         document.querySelector("#notifyMe").addEventListener('click', () => {
             if (!("Notification" in window)) {
                 alert("This browser does not support desktop notification");
@@ -22,7 +28,7 @@
                 alert(Notification.permission)
                 Notification.requestPermission().then(function (permission) {
                     if (permission === "granted") {
-                        var notification = new Notification("Hi there!");
+                        showNotification()
                     }
                 });
             } else {
