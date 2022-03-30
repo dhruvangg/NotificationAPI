@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification API</title>
+</head>
+
+<body>
+    <button id="notifyMe">Notify me!</button>
+    <script>
+        document.querySelector("#notifyMe").addEventListener('click', () => {
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notification");
+            } else if (Notification.permission === "granted") {
+                alert(Notification.permission)
+                var notification = new Notification("Hi there!");
+                console.log(notification)
+            } else if (Notification.permission !== "denied") {
+                alert(Notification.permission)
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === "granted") {
+                        var notification = new Notification("Hi there!");
+                    }
+                });
+            } else {
+                console.log(Notification.permission)
+            }
+        })
+
+    </script>
+</body>
+
+</html>
