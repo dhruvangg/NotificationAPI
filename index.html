@@ -24,9 +24,7 @@
             if (!("Notification" in window)) {
                 alert("This browser does not support desktop notification");
             } else if (Notification.permission === "granted") {
-                alert(Notification.permission)
-                var notification = new Notification("Hi there!");
-                console.log(notification)
+                showNotification()
             } else if (Notification.permission !== "denied") {
                 alert(Notification.permission)
                 Notification.requestPermission().then(function (permission) {
